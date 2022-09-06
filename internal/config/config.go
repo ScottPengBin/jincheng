@@ -18,6 +18,12 @@ type MySQLConf struct {
 
 type Config struct {
 	MySQLConf `yaml:"mysql"`
+	App       `yaml:"app"`
+}
+
+type App struct {
+	Mode string `yaml:"mode"`
+	Port string `yaml:"port"`
 }
 
 var Provider = wire.NewSet(GetConfig)

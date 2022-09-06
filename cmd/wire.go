@@ -1,13 +1,17 @@
-//+build wireinject
+//go:build wireinject
+// +build wireinject
 
 package main
 
 import (
 	"github.com/google/wire"
 	"github.com/sirupsen/logrus"
-	"study_wire/config"
-	"study_wire/internal/core/log"
-	"study_wire/internal/db"
+	"jincheng/internal/config"
+	"jincheng/internal/core/log"
+	"jincheng/internal/db"
+	"os"
+	"os/signal"
+	"syscall"
 )
 
 type App struct {
@@ -17,7 +21,8 @@ type App struct {
 }
 
 func InitApp() App {
-	wire.Build(db.Provider,
+	wire.Build(
+		db.Provider,
 		config.Provider,
 		log.Provider,
 		wire.Struct(new(App), "*"),
@@ -25,6 +30,8 @@ func InitApp() App {
 	return App{}
 }
 
-func (a App) Start() {
-
+func (app *App) Start() <-chan os.Signal {
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
+	return c
 }

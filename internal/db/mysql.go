@@ -6,8 +6,8 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
+	"jincheng/internal/config"
 	"log"
-	"study_wire/config"
 	"time"
 )
 
@@ -30,7 +30,7 @@ func getDBLogger(l *logrus.Logger) logger.Interface {
 		log.New(l.Out, "\r\n", log.LstdFlags),
 		logger.Config{
 			SlowThreshold:             200 * time.Millisecond,
-			Colorful:                  true,
+			Colorful:                  false,
 			IgnoreRecordNotFoundError: false,
 			LogLevel:                  logger.LogLevel(l.Level),
 		},
