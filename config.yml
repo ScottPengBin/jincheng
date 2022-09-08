@@ -4,7 +4,7 @@ app:
 
 mysql:
   master:
-    dsn: root:root@tcp(127.0.0.1:3306)/zlb?charset=utf8&parseTime=True&loc=Local
+    dsn: root:root@tcp(127.0.0.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
   slave:
-    dsn: root:root@tcp(127.0.0.1:3306)/zlb?charset=utf8&parseTime=True&loc=Local
+    dsn: root:root@tcp(127.0.0.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
   driver: mysql

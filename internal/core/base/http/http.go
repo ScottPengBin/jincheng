@@ -5,20 +5,20 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"github.com/sirupsen/logrus"
-	"jincheng/app/pers_amount_total"
 	"jincheng/internal/config"
+	"jincheng/internal/core/base/router"
 	"jincheng/internal/middle_ware"
 	"net/http"
 	"time"
 )
 
-var Provider = wire.NewSet(NewRouter, NewHttpServer)
+var Provider = wire.NewSet(NewRouter, NewHttpServer, router.Router, router.Provider)
 
 type MyServer struct {
 	httpServer *http.Server
 }
 
-func NewRouter(config config.Config, logger *logrus.Logger,controllers pers_amount_total.InitControllers) *gin.Engine {
+func NewRouter(config config.Config, logger *logrus.Logger, controllers func(r *gin.Engine)) *gin.Engine {
 	gin.SetMode(config.App.Mode)
 
 	r := gin.New()
