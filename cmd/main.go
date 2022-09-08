@@ -3,5 +3,18 @@ package main
 func main() {
 
 	app := InitApp()
-	app.Start()
+
+	defer func() {
+
+		sig := <-app.Start()
+
+		app.Logger.Info("收到信号:", sig)
+
+		err := app.Stop()
+
+		if err != nil {
+			panic(err)
+		}
+	}()
+
 }

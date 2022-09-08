@@ -5,6 +5,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"io"
 	"os"
+	"time"
 )
 
 var Provider = wire.NewSet(NewLog)
@@ -21,7 +22,8 @@ func NewLog() *logrus.Logger {
 		return nil
 	}
 
-	file, err := os.OpenFile(dir+"/logs/log.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	fileName := time.Now().Format("2006-01-02")
+	file, err := os.OpenFile(dir+"/logs/"+fileName+"-log.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
 
 	if err != nil {
 		log.Info("Failed to log to file, using default stderr")

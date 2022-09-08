@@ -1,6 +1,7 @@
 package middle_ware
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	"time"
@@ -13,7 +14,7 @@ func LogMiddleWare(logger *logrus.Logger) gin.HandlerFunc {
 
 		c.Next()
 
-		latencyTime := time.Now().Sub(st)
+		latencyTime := fmt.Sprintf("%fs", time.Now().Sub(st).Seconds())
 
 		logger.WithFields(logrus.Fields{
 			"latency_time": latencyTime,

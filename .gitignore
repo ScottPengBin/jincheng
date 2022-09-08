@@ -1,0 +1,8 @@
+*.exe
+*.exe*
+*.log
+config.yaml
+.idea/
+.vscode/
+.air.conf
+tmp
