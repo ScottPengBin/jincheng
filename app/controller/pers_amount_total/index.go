@@ -6,8 +6,7 @@ import (
 	"jincheng/internal/db"
 )
 
-var NewController = wire.NewSet(New)
-
+var Provider = wire.NewSet(New)
 
 func New(db db.DataBase) Controller {
 	return Controller{

@@ -3,8 +3,8 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
+	"jincheng/app/controller/pers_amount_total"
 	"jincheng/app/controller/user"
-	"jincheng/app/pers_amount_total"
 )
 
 type OptionsController struct {

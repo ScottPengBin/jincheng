@@ -8,8 +8,8 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	"jincheng/app/controller/pers_amount_total"
 	user2 "jincheng/app/controller/user"
-	"jincheng/app/pers_amount_total"
 	"jincheng/internal/config"
 	"jincheng/internal/core/base/http"
 	"jincheng/internal/core/base/router"

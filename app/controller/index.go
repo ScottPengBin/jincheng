@@ -2,9 +2,9 @@ package controller
 
 import (
 	"github.com/google/wire"
+	"jincheng/app/controller/pers_amount_total"
 	"jincheng/app/controller/user"
-	"jincheng/app/pers_amount_total"
 )
 
-var Provider = wire.NewSet(pers_amount_total.NewController,user.Provider)
+var Provider = wire.NewSet(pers_amount_total.Provider,user.Provider)
 
