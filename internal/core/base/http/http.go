@@ -5,9 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"github.com/sirupsen/logrus"
-	"jincheng/internal/config"
-	"jincheng/internal/core/base/router"
-	"jincheng/internal/middle_ware"
+	"jincheng/config"
+	"jincheng/internal/core/middle_ware"
+	"jincheng/internal/router"
 	"net/http"
 	"time"
 )

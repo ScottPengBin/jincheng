@@ -1,10 +1,11 @@
 app:
   mode: test
-  port: 8080
+  port: 8088
 
 mysql:
   master:
-    dsn: root:root@tcp(127.0.0.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
+    dsn: root:root@tcp(192.168.128.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
   slave:
-    dsn: root:root@tcp(127.0.0.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
+    dsn: root:root@tcp(192.168.128.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
   driver: mysql
+  prefix: jc_

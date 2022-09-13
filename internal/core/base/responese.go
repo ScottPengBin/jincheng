@@ -19,6 +19,13 @@ type Response struct {
 	ctx *gin.Context
 }
 
+type PaginateData struct {
+	Records interface{} `json:"records"`
+	Current int         `json:"current"`
+	Size    int         `json:"size"`
+	Total   int64       `json:"total"`
+}
+
 func NewResponse(ctx *gin.Context) Response {
 	return Response{
 		ctx: ctx,
@@ -47,4 +54,13 @@ func (r Response) Success(data interface{}) {
 		"",
 		data,
 	)
+}
+
+func (r Response) Paginate(data interface{}, total int64, param ReqPaginateParam) {
+	var pd PaginateData
+	pd.Records = data
+	pd.Total = total
+	pd.Current = param.Current
+	pd.Size = param.Size
+	r.Success(pd)
 }

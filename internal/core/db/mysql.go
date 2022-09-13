@@ -7,7 +7,8 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"jincheng/internal/config"
+	"gorm.io/gorm/schema"
+	"jincheng/config"
 	"log"
 	"time"
 )
@@ -22,8 +23,10 @@ type DataBase struct {
 var Provider = wire.NewSet(NewDataBase)
 
 func NewDataBase(c config.Config, logger *logrus.Logger) DataBase {
-	m, mdb := getConn(c.MySQLConf.Driver, c.MySQLConf.Master.Dsn, logger)
-	s, sdb := getConn(c.MySQLConf.Driver, c.MySQLConf.Slave.Dsn, logger)
+
+	m, mdb := getConn(c.MySQLConf.Driver, c.MySQLConf.Master.Dsn, c.MySQLConf.Prefix, logger)
+	s, sdb := getConn(c.MySQLConf.Driver, c.MySQLConf.Slave.Dsn, c.MySQLConf.Prefix, logger)
+
 	return DataBase{
 		Master:   m,
 		MasterDb: mdb,
@@ -45,14 +48,24 @@ func getDBLogger(l *logrus.Logger) logger.Interface {
 
 }
 
-func getConn(driver, dsn string, logger *logrus.Logger) (gorm.DB, *sql.DB) {
+func getConn(driver, dsn, prefix string, logger *logrus.Logger) (gorm.DB, *sql.DB) {
 	director := mysql.New(mysql.Config{
 		DriverName: driver,
 		DSN:        dsn,
 	})
-	connect, _ := gorm.Open(director, &gorm.Config{
+
+	connect, err := gorm.Open(director, &gorm.Config{
 		Logger: getDBLogger(logger),
+		NamingStrategy: schema.NamingStrategy{
+			TablePrefix: prefix,
+			SingularTable: true,
+		},
 	})
+
+	if err != nil {
+		panic(err)
+	}
+
 	connect.Debug()
 	db, err := connect.DB()
 	if err != nil {

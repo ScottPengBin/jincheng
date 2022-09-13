@@ -4,9 +4,9 @@ func main() {
 
 	app := InitApp()
 
-	defer func() {
+	sig := <-app.Start()
 
-		sig := <-app.Start()
+	defer func() {
 
 		app.Logger.Info("收到信号:", sig)
 

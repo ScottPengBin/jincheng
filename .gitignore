@@ -2,6 +2,7 @@
 *.exe*
 *.log
 config.yaml
+config.yml
 .idea/
 .vscode/
 .air.conf

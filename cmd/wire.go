@@ -7,11 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"github.com/sirupsen/logrus"
-	"jincheng/app/controller"
-	"jincheng/internal/config"
+	"jincheng/config"
 	"jincheng/internal/core/base/http"
+	"jincheng/internal/core/db"
 	"jincheng/internal/core/log"
-	"jincheng/internal/db"
 	http2 "net/http"
 	"os"
 	"os/signal"
@@ -21,9 +20,9 @@ import (
 )
 
 type App struct {
-	DataBase   db.DataBase
-	Config     config.Config
-	Logger     *logrus.Logger
+	DataBase db.DataBase
+	Config   config.Config
+	Logger   *logrus.Logger
 	Router     *gin.Engine
 	HttpServer *http.MyServer
 	mu         sync.RWMutex
@@ -36,7 +35,6 @@ func InitApp() *App {
 		config.Provider,
 		log.Provider,
 		http.Provider,
-		controller.Provider,
 		wire.Struct(new(App), "DataBase", "Config", "Logger", "Router", "HttpServer"),
 	)
 	return &App{}

@@ -14,6 +14,7 @@ type MySQLConf struct {
 	Slave struct {
 		Dsn string `yaml:"dsn"`
 	} `yaml:"slave"`
+	Prefix string `yaml:"prefix"`
 }
 
 type Config struct {
