@@ -64,3 +64,11 @@ func (r Response) Paginate(data interface{}, total int64, param ReqPaginateParam
 	pd.Size = param.Size
 	r.Success(pd)
 }
+
+func (r Response) ErrorParam(err string)  {
+	r.ctx.JSON(http2.StatusUnprocessableEntity, &Result{
+		Code:10010,
+		Err: err,
+		Success: false,
+	})
+}

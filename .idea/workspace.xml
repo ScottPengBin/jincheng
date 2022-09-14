@@ -5,25 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2915878a-0a11-4202-8810-9b3734a466a7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/index.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/pers_amount_total/index.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/user/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/user/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/wire.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/wire.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controller/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/member/index.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/wire_gen.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/base/gin.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/core/base/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/http/http.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/core/base/responese.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/responese.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/base/router/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/db/mysql.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/db/mysql.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/middle_ware/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/middle_ware/log.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/user/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/user/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/member.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/member.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/router/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/index.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,17 +44,21 @@
   <component name="GoLibraries">
     <option name="urls">
       <list>
-        <option value="file://$PROJECT_DIR$/../../" />
+        <option value="file://$USER_HOME$/" />
       </list>
     </option>
     <option name="useGoPathFromSystemEnvironment" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/go.mod" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/core/base/http/http.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/cmd/wire.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/cmd/main.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/core/base/http/http.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/go.mod" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/internal/model/member.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/config.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/controller/member/index.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/pkg/mod/gorm.io/gorm@v1.23.8/model.go" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -85,7 +81,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../zlb-monitor-dashboard" />
-    <property name="settings.editor.selected.configurable" value="yiiguxing.plugin.translate" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -150,7 +146,7 @@
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/../../pkg/mod/gorm.io/gorm@v1.23.8/scan.go</url>
+          <url>file://$USER_HOME$/pkg/mod/gorm.io/gorm@v1.23.8/scan.go</url>
           <line>248</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>

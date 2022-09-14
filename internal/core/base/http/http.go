@@ -7,6 +7,7 @@ import (
 	"github.com/sirupsen/logrus"
 	"jincheng/config"
 	"jincheng/internal/core/middle_ware"
+	"jincheng/internal/core/valida"
 	"jincheng/internal/router"
 	"net/http"
 	"time"
@@ -26,6 +27,8 @@ func NewRouter(config config.Config, logger *logrus.Logger, controllers func(r *
 	r.Use(middle_ware.LogMiddleWare(logger))
 
 	controllers(r)
+
+	valida.LoadZh()
 
 	return r
 }

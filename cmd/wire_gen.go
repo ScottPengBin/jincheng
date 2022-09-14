@@ -33,7 +33,7 @@ func InitApp() *App {
 	service := memberSer.NewService(dataBase)
 	controller := member.NewController(service)
 	optionsController := router.OptionsController{
-		User: controller,
+		Member: controller,
 	}
 	v := router.Router(optionsController)
 	engine := http.NewRouter(configConfig, logger, v)
