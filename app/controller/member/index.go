@@ -42,13 +42,25 @@ func (c *Controller) GetList(ctx *gin.Context) {
 }
 
 // Add 新增会员
-func (c Controller) Add(ctx *gin.Context)  {
+func (c Controller) Add(ctx *gin.Context) {
 	var memParam model.Member
 
-	if err := ctx.ShouldBindJSON(&memParam);err != nil{
+	if err := ctx.ShouldBindJSON(&memParam); err != nil {
 		errs := valida.Trans(err)
 		base.NewResponse(ctx).ErrorParam(errs)
 		return
 	}
+
+}
+
+func (c Controller) Test(ctx *gin.Context) {
+	param := &struct {
+		Msg string `json:"msg"`
+	}{}
+
+	param.Msg = ctx.Query("msg")
+
+
+	base.NewResponse(ctx).Success(c.service.Test(param.Msg))
 
 }

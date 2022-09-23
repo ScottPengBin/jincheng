@@ -22,6 +22,7 @@ func Router(oc OptionsController) func(r *gin.Engine) {
 		jc := g.Group("/api/jc/member")
 		{
 			jc.GET("getList", oc.Member.GetList)
+			jc.GET("test", oc.Member.Test)
 			jc.POST("add",oc.Member.Add)
 		}
 	}

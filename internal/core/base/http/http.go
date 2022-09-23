@@ -28,6 +28,7 @@ func NewRouter(config config.Config, logger *logrus.Logger, controllers func(r *
 
 	controllers(r)
 
+	//加载中文验证器
 	valida.LoadZh()
 
 	return r

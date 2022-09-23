@@ -4,94 +4,48 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2915878a-0a11-4202-8810-9b3734a466a7" name="Changes" comment="">
+    <list default="true" id="5eb7bbc9-e4d4-427b-8132-7d131b82c20b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/jincheng.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jincheng.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/member/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/wire_gen.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/base/gin.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/core/base/http/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/http/http.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/base/responese.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/responese.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/member.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/member.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/router/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/member/index.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Go File" />
-      </list>
-    </option>
-  </component>
-  <component name="GOROOT" url="file://D:/Softwares/go" />
+  <component name="GOROOT" url="file://$PROJECT_DIR$/../../../../usr/local/src/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="GoLibraries">
-    <option name="urls">
-      <list>
-        <option value="file://$USER_HOME$/" />
-      </list>
-    </option>
-    <option name="useGoPathFromSystemEnvironment" value="false" />
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/cmd/wire.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/cmd/main.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/core/base/http/http.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/go.mod" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/internal/model/member.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/go.sum" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/config.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/controller/member/index.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/pkg/mod/gorm.io/gorm@v1.23.8/model.go" root0="SKIP_INSPECTION" />
+    <setting file="file:////wsl.localhost/Ubuntu-22.04/root/docker/docker-compose.yml" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
-  <component name="ProjectId" id="2EO1jSKuHNbwDRajtpGpeWVQubd" />
+  <component name="ProjectId" id="2Ey8tDsn0itDt6c55aGS5Hbtu6e" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="configurable..is.expanded" value="false" />
-    <property name="configurable.GoLibrariesConfigurable.is.expanded" value="true" />
     <property name="go.formatter.settings.were.checked" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.modules.go.list.on.any.changes.was.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../zlb-monitor-dashboard" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\peng\go\src\jincheng" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="\\wsl$\Ubuntu-22.04\root\go\src\jincheng\internal" />
-      <recent name="\\wsl$\Ubuntu-22.04\root\go\src\jincheng\internal\core" />
-      <recent name="\\wsl$\Ubuntu-22.04\root\go\src\jincheng" />
-    </key>
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
     <configuration name="go build jincheng/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -113,44 +67,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="wire.go" />
-    <option featureType="com.intellij.fileTypeFactory" implementationName="wire_gen.go" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://D:/Softwares/go/src/net/http/server.go</url>
-          <line>2721</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/app/pers_amount_total/index.go</url>
-          <line>40</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$USER_HOME$/pkg/mod/gorm.io/gorm@v1.23.8/scan.go</url>
-          <line>248</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
