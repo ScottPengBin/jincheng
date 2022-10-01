@@ -12,19 +12,19 @@ import (
 
 var trans ut.Translator
 
-func LoadZh()  {
-	if v,ok :=binding.Validator.Engine().(*validator.Validate);ok{
+func LoadZh() {
+	if v, ok := binding.Validator.Engine().(*validator.Validate); ok {
 		zht := zh.New()
 
 		enT := en.New()
 
-		uni := ut.New(enT,zht)
+		uni := ut.New(enT, zht)
 
-		trans,ok = uni.GetTranslator("zh")
+		trans, ok = uni.GetTranslator("zh")
 
-		err := zhTranslations.RegisterDefaultTranslations(v,trans)
+		err := zhTranslations.RegisterDefaultTranslations(v, trans)
 
-		if err!= nil{
+		if err != nil {
 			fmt.Println(err)
 			return
 		}
@@ -33,12 +33,12 @@ func LoadZh()  {
 	return
 }
 
-func Trans(err error)  string{
-	errs,ok:=err.(validator.ValidationErrors)
-	if !ok{
+func Trans(err error) string {
+	errs, ok := err.(validator.ValidationErrors)
+	if !ok {
 		return "不是合法的数据格式"
 	}
-	var  errMsg string
+	var errMsg string
 	for _, fieldError := range errs {
 		errMsg += fieldError.Translate(trans)
 	}

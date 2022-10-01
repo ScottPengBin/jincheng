@@ -32,7 +32,7 @@ func InitApp() *App {
 	dataBase := db.NewDataBase(configConfig, logger)
 	service := memberSer.NewService(dataBase)
 	controller := member.NewController(service)
-	optionsController := router.OptionsController{
+	optionsController := &router.OptionsController{
 		Member: controller,
 	}
 	v := router.Router(optionsController)
@@ -51,8 +51,8 @@ func InitApp() *App {
 // wire.go:
 
 type App struct {
-	DataBase   db.DataBase
-	Config     config.Config
+	DataBase   *db.DataBase
+	Config     *config.Config
 	Logger     *logrus.Logger
 	Router     *gin.Engine
 	HttpServer *http.MyServer

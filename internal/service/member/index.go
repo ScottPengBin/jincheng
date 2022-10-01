@@ -6,16 +6,45 @@ import (
 	"jincheng/internal/model"
 	"net"
 	"sync/atomic"
+	"time"
 )
 
 type Service struct {
-	db db.DataBase
+	db *db.DataBase
 }
 
-func NewService(db db.DataBase) Service {
-	return Service{
+func NewService(db *db.DataBase) *Service {
+	return &Service{
 		db: db,
 	}
+}
+
+// Add 添加会员
+func (s *Service) Add(mem *model.Member, car *model.CarInfo) error {
+	t := time.Now()
+
+	tx := s.db.Master.Begin()
+	car.CreatedAt = t
+	car.UpdatedAt = t
+	//车辆信息添加
+	carRes := tx.Create(car)
+	if carRes.Error != nil {
+		tx.Rollback()
+		return carRes.Error
+	}
+
+	//会员信息添加
+	mem.CarId = car.ID
+	mem.CreatedAt = t
+	mem.UpdateAt = t
+	memRes := tx.Create(mem)
+	if memRes.Error != nil {
+		tx.Rollback()
+		return memRes.Error
+	}
+	tx.Commit()
+	return nil
+
 }
 
 func (s *Service) GetList(page, size int) ([]model.Member, int64) {
@@ -36,10 +65,9 @@ func (s *Service) GetList(page, size int) ([]model.Member, int64) {
 }
 
 var failedNum int64
-var num  = int64(1)
+var num = int64(1)
 
 func (s Service) Test(msg string) int {
-
 
 	defer func() {
 		if err := recover(); err != nil {
@@ -59,9 +87,8 @@ func (s Service) Test(msg string) int {
 
 	defer func() {
 		_ = conn.Close()
-		atomic.AddInt64(&num,1)
+		atomic.AddInt64(&num, 1)
 	}()
-
 
 	fmt.Println(num)
 

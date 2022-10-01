@@ -29,11 +29,11 @@ type App struct {
 
 var Provider = wire.NewSet(GetConfig)
 
-func GetConfig() Config {
+func GetConfig() *Config {
 	b, _ := ioutil.ReadFile("config.yml")
 
 	var conf Config
 	_ = yaml.Unmarshal(b, &conf)
 
-	return conf
+	return &conf
 }

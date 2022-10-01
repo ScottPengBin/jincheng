@@ -20,9 +20,9 @@ import (
 )
 
 type App struct {
-	DataBase db.DataBase
-	Config   config.Config
-	Logger   *logrus.Logger
+	DataBase   *db.DataBase
+	Config     *config.Config
+	Logger     *logrus.Logger
 	Router     *gin.Engine
 	HttpServer *http.MyServer
 	mu         sync.RWMutex

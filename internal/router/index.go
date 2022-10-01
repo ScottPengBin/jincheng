@@ -7,9 +7,8 @@ import (
 )
 
 type OptionsController struct {
-	Member member.Controller
+	Member *member.Controller
 }
-
 
 var Provider = wire.NewSet(
 	member.Provider,
@@ -17,13 +16,13 @@ var Provider = wire.NewSet(
 )
 
 // Router 路由
-func Router(oc OptionsController) func(r *gin.Engine) {
+func Router(oc *OptionsController) func(r *gin.Engine) {
 	return func(g *gin.Engine) {
 		jc := g.Group("/api/jc/member")
 		{
 			jc.GET("getList", oc.Member.GetList)
 			jc.GET("test", oc.Member.Test)
-			jc.POST("add",oc.Member.Add)
+			jc.POST("add", oc.Member.Add)
 		}
 	}
 

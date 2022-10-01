@@ -19,7 +19,7 @@ type MyServer struct {
 	httpServer *http.Server
 }
 
-func NewRouter(config config.Config, logger *logrus.Logger, controllers func(r *gin.Engine)) *gin.Engine {
+func NewRouter(config *config.Config, logger *logrus.Logger, controllers func(r *gin.Engine)) *gin.Engine {
 	gin.SetMode(config.App.Mode)
 
 	r := gin.New()
@@ -34,7 +34,7 @@ func NewRouter(config config.Config, logger *logrus.Logger, controllers func(r *
 	return r
 }
 
-func NewHttpServer(config config.Config, router *gin.Engine) *MyServer {
+func NewHttpServer(config *config.Config, router *gin.Engine) *MyServer {
 	return &MyServer{
 		httpServer: &http.Server{
 			Addr:    ":" + config.App.Port,

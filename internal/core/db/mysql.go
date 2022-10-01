@@ -14,20 +14,20 @@ import (
 )
 
 type DataBase struct {
-	Master   gorm.DB
+	Master   *gorm.DB
 	MasterDb *sql.DB
-	Salve    gorm.DB
+	Salve    *gorm.DB
 	SalveDb  *sql.DB
 }
 
 var Provider = wire.NewSet(NewDataBase)
 
-func NewDataBase(c config.Config, logger *logrus.Logger) DataBase {
+func NewDataBase(c *config.Config, logger *logrus.Logger) *DataBase {
 
 	m, mdb := getConn(c.MySQLConf.Driver, c.MySQLConf.Master.Dsn, c.MySQLConf.Prefix, logger)
 	s, sdb := getConn(c.MySQLConf.Driver, c.MySQLConf.Slave.Dsn, c.MySQLConf.Prefix, logger)
 
-	return DataBase{
+	return &DataBase{
 		Master:   m,
 		MasterDb: mdb,
 		Salve:    s,
@@ -48,7 +48,7 @@ func getDBLogger(l *logrus.Logger) logger.Interface {
 
 }
 
-func getConn(driver, dsn, prefix string, logger *logrus.Logger) (gorm.DB, *sql.DB) {
+func getConn(driver, dsn, prefix string, logger *logrus.Logger) (*gorm.DB, *sql.DB) {
 	director := mysql.New(mysql.Config{
 		DriverName: driver,
 		DSN:        dsn,
@@ -57,7 +57,7 @@ func getConn(driver, dsn, prefix string, logger *logrus.Logger) (gorm.DB, *sql.D
 	connect, err := gorm.Open(director, &gorm.Config{
 		Logger: getDBLogger(logger),
 		NamingStrategy: schema.NamingStrategy{
-			TablePrefix: prefix,
+			TablePrefix:   prefix,
 			SingularTable: true,
 		},
 	})
@@ -75,6 +75,6 @@ func getConn(driver, dsn, prefix string, logger *logrus.Logger) (gorm.DB, *sql.D
 	db.SetMaxOpenConns(100)
 	logger.Info("gorm init")
 
-	return *connect, db
+	return connect, db
 
 }
