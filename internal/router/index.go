@@ -23,6 +23,7 @@ func Router(oc *OptionsController) func(r *gin.Engine) {
 			jc.GET("getList", oc.Member.GetList)
 			jc.GET("test", oc.Member.Test)
 			jc.POST("add", oc.Member.Add)
+			jc.POST("edit", oc.Member.Edit)
 		}
 	}
 

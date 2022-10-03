@@ -13,6 +13,11 @@ type Service struct {
 	db *db.DataBase
 }
 
+type memList struct {
+	Mem model.Member    `json:"member"`
+	Car []model.CarInfo `json:"car"`
+}
+
 func NewService(db *db.DataBase) *Service {
 	return &Service{
 		db: db,
@@ -47,21 +52,50 @@ func (s *Service) Add(mem *model.Member, car *model.CarInfo) error {
 
 }
 
-func (s *Service) GetList(page, size int) ([]model.Member, int64) {
+// GetList 列表
+func (s *Service) GetList(page, size int) ([]memList, int64) {
 
-	var item []model.Member
+	var memItem []model.Member
+	var ResList []memList
 	var total int64
 
+	//会员信息
 	builder := s.db.Salve.Model(&model.Member{}).
-		Select("*").
-		Offset((page - 1) * size).
-		Limit(size)
+		Select("*")
 
 	builder.Count(&total)
 
-	builder.Scan(&item)
+	builder.Offset((page - 1) * size).
+		Limit(size).
+		Scan(&memItem)
 
-	return item, total
+	//车辆信息
+	var carIds []uint
+	for _, member := range memItem {
+		carIds = append(carIds, member.CarId)
+	}
+	var cars []model.CarInfo
+	s.db.Salve.Model(model.CarInfo{}).
+		Where("id in (?)", carIds).
+		Select("*").
+		Scan(&cars)
+
+	//将车辆信息赋值给会员
+	for i := range memItem {
+		var tmp memList
+		var c []model.CarInfo
+		tmp.Mem = memItem[i]
+
+		for _, car := range cars {
+			if car.ID == tmp.Mem.CarId {
+				c = append(c, car)
+			}
+		}
+		tmp.Car = c
+		ResList = append(ResList, tmp)
+	}
+
+	return ResList, total
 }
 
 var failedNum int64

@@ -23,6 +23,28 @@ type Controller struct {
 	service *memberSer.Service
 }
 
+//Edit 编辑
+func (c *Controller) Edit(ctx *gin.Context) {
+
+	output := base.NewResponse(ctx)
+	type reqParam struct {
+		Id       uint   `json:"member_id" binding:"required" msg:"会员member_id不能为空"`
+		Name     string `json:"member_name" binding:"required" msg:"会员名不能为空"`
+		Phone    string `json:"phone" binding:"required" msg:"会员电话号码不能为空"`
+		Note     string `json:"note"`
+		BrithDay string `json:"brith_day"`
+		Gender   string `json:"gender"`
+	}
+	var param reqParam
+
+	if err := ctx.ShouldBindJSON(&param); err != nil {
+		output.ErrorParam(valida.TransMsg(err, param))
+		return
+	}
+
+	output.Success(param)
+}
+
 // GetList 获取会员列表
 func (c *Controller) GetList(ctx *gin.Context) {
 	var param base.ReqPaginateParam
@@ -43,7 +65,7 @@ func (c *Controller) GetList(ctx *gin.Context) {
 }
 
 // Add 新增会员
-func (c Controller) Add(ctx *gin.Context) {
+func (c *Controller) Add(ctx *gin.Context) {
 	//会员信息
 	var memParam model.Member
 	//车辆信息
@@ -75,7 +97,7 @@ func (c Controller) Add(ctx *gin.Context) {
 
 }
 
-func (c Controller) Test(ctx *gin.Context) {
+func (c *Controller) Test(ctx *gin.Context) {
 	param := &struct {
 		Msg string `json:"msg"`
 	}{}

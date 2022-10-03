@@ -1,12 +1,14 @@
 package model
 
 import (
-	"gorm.io/gorm"
 	"gorm.io/plugin/soft_delete"
+	"time"
 )
 
 type CarInfo struct {
-	gorm.Model
+	ID         uint                  `json:"id" gorm:"primarykey"`
+	CreatedAt  time.Time             `json:"created_at"`
+	UpdatedAt  time.Time             `json:"updated_at"`
 	Name       string                `json:"car_name" gorm:"name" binding:"required"`
 	CarNo      string                `json:"car_no" binding:"required"`
 	Color      string                `json:"car_color" binding:"required"`

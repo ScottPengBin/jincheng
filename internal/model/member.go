@@ -6,7 +6,7 @@ import (
 )
 
 type Member struct {
-	ID         uint                  `json:"id"  gorm:"id"`
+	ID         uint                  `json:"id"   gorm:"primarykey"`
 	Name       string                `json:"member_name" gorm:"name" binding:"required"`
 	WetChatId  uint                  `json:"wet_chat_id" gorm:"wet_chat_id"`
 	BrithDay   string                `json:"brith_day" gorm:"brith_day"`
