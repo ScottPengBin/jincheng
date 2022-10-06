@@ -3,15 +3,18 @@ package router
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
+	"jincheng/app/controller/admin"
 	"jincheng/app/controller/member"
 )
 
 type OptionsController struct {
 	Member *member.Controller
+	Admin  *admin.Controller
 }
 
 var Provider = wire.NewSet(
 	member.Provider,
+	admin.Provider,
 	wire.Struct(new(OptionsController), "*"),
 )
 
@@ -24,6 +27,10 @@ func Router(oc *OptionsController) func(r *gin.Engine) {
 			jc.GET("test", oc.Member.Test)
 			jc.POST("add", oc.Member.Add)
 			jc.POST("edit", oc.Member.Edit)
+		}
+		adm := g.Group("api/jc/admin")
+		{
+			adm.POST("login", oc.Admin.Login)
 		}
 	}
 

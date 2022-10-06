@@ -9,12 +9,14 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	admin2 "jincheng/app/controller/admin"
 	"jincheng/app/controller/member"
 	"jincheng/config"
 	"jincheng/internal/core/base/http"
 	"jincheng/internal/core/db"
 	"jincheng/internal/core/log"
 	"jincheng/internal/router"
+	"jincheng/internal/service/admin"
 	"jincheng/internal/service/member"
 	http2 "net/http"
 	"os"
@@ -32,8 +34,11 @@ func InitApp() *App {
 	dataBase := db.NewDataBase(configConfig, logger)
 	service := memberSer.NewService(dataBase)
 	controller := member.NewController(service)
+	adminService := admin.NewService(dataBase)
+	adminController := admin2.NewController(adminService)
 	optionsController := &router.OptionsController{
 		Member: controller,
+		Admin:  adminController,
 	}
 	v := router.Router(optionsController)
 	engine := http.NewRouter(configConfig, logger, v)
