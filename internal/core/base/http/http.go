@@ -26,6 +26,7 @@ func NewRouter(config *config.Config, logger *logrus.Logger, controllers func(r 
 
 	r.Use(middle_ware.LogMiddleWare(logger))
 	r.Use(middle_ware.Cors)
+	r.Use(middle_ware.Jwt(config))
 
 	controllers(r)
 

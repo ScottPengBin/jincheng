@@ -9,3 +9,9 @@ mysql:
     dsn: root:root@tcp(127.0.0.1:3306)/jin_cheng?charset=utf8&parseTime=True&loc=Local
   driver: mysql
   prefix: jc_
+
+jwt:
+  alg: PS512
+  issuer: scott
+  expiresAt: time.Hour * 24
+  secret: jc_scott

@@ -20,7 +20,9 @@ var Provider = wire.NewSet(
 
 // Router 路由
 func Router(oc *OptionsController) func(r *gin.Engine) {
+
 	return func(g *gin.Engine) {
+
 		jc := g.Group("/api/jc/member")
 		{
 			jc.GET("getList", oc.Member.GetList)

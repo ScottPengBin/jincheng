@@ -34,7 +34,11 @@ func (c *Controller) Login(ctx *gin.Context) {
 		return
 	}
 
-	res := c.service.Login(param.Account, param.Password)
+	res, err := c.service.Login(param.Account, param.Password)
+	if err != nil {
+		output.ErrorParam(err.Error())
+		return
+	}
 
 	output.Success(res)
 }

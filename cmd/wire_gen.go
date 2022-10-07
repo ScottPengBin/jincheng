@@ -34,7 +34,7 @@ func InitApp() *App {
 	dataBase := db.NewDataBase(configConfig, logger)
 	service := memberSer.NewService(dataBase)
 	controller := member.NewController(service)
-	adminService := admin.NewService(dataBase)
+	adminService := admin.NewService(dataBase, configConfig)
 	adminController := admin2.NewController(adminService)
 	optionsController := &router.OptionsController{
 		Member: controller,
