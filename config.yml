@@ -11,7 +11,7 @@ mysql:
   prefix: jc_
 
 jwt:
-  alg: PS512
+  alg: HS256
   issuer: scott
-  expiresAt: time.Hour * 24
+  expiresAt: 24h
   secret: jc_scott

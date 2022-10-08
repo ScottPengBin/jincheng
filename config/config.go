@@ -4,7 +4,6 @@ import (
 	"github.com/google/wire"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
-	"time"
 )
 
 type MySQLConf struct {
@@ -30,10 +29,10 @@ type App struct {
 }
 
 type Jwt struct {
-	Alg       string        `yaml:"alg"`
-	Issuer    string        `yaml:"issuer"`
-	ExpiresAt time.Duration `yaml:"expiresAt"`
-	Secret    string        `yaml:"secret"`
+	Alg       string `yaml:"alg"`
+	Issuer    string `yaml:"issuer"`
+	ExpiresAt string `yaml:"expiresAt"`
+	Secret    string `yaml:"secret"`
 }
 
 var Provider = wire.NewSet(GetConfig)

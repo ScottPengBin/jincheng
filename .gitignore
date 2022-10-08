@@ -7,3 +7,4 @@ config.yml
 .vscode/
 .air.conf
 tmp
+.idea/workspace.xml
