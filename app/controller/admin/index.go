@@ -42,3 +42,20 @@ func (c *Controller) Login(ctx *gin.Context) {
 
 	output.Success(res)
 }
+
+func (c *Controller) GetMenus(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+	var param struct {
+		UserId int `json:"userId" binding:"required"`
+	}
+
+
+	if err := ctx.ShouldBindUri(&param); err != nil {
+		msg := valida.TransMsg(err, param)
+		output.ErrorParam(msg)
+		return
+	}
+	c.service.GetMenus(param.UserId)
+
+	output.Success("")
+}

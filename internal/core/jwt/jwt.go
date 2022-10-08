@@ -2,7 +2,6 @@ package jwt
 
 import (
 	"errors"
-	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"jincheng/config"
 	"strings"
@@ -60,8 +59,6 @@ func ParseToken(token string, conf *config.Config) (*Claims, error) {
 	tokenClaims, err := jwt.ParseWithClaims(token, &Claims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(conf.Jwt.Secret), nil
 	})
-
-	fmt.Println(tokenClaims.Claims.(*Claims))
 
 	if tokenClaims != nil {
 		if claims, ok := tokenClaims.Claims.(*Claims); ok && tokenClaims.Valid {

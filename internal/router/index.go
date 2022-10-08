@@ -33,6 +33,7 @@ func Router(oc *OptionsController) func(r *gin.Engine) {
 		adm := g.Group("api/jc/admin")
 		{
 			adm.POST("login", oc.Admin.Login)
+			adm.GET("menus", oc.Admin.GetMenus)
 		}
 	}
 
