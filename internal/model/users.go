@@ -7,4 +7,5 @@ type Users struct {
 	Password string `json:"-"`
 	Mobile   string `json:"mobile"`
 	Email    string `json:"email"`
+	Enabled  string `json:"enabled"`
 }

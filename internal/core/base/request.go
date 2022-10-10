@@ -1,6 +1,6 @@
 package base
 
-type ReqPaginateParam struct {
-	Current int `json:"current"`
-	Size    int `json:"size"`
+type ReqPaginateParam interface {
+	GetPageNum() int
+	GetPageSize() int
 }

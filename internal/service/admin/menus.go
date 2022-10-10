@@ -1,58 +1,22 @@
 package admin
 
 import (
-	"crypto/sha1"
-	"encoding/hex"
-	"errors"
-	"jincheng/config"
 	"jincheng/internal/core/db"
-	"jincheng/internal/core/jwt"
 	"jincheng/internal/model"
 )
 
-type Service struct {
+type MenusService struct {
 	db *db.DataBase
-	c  *config.Config
 }
 
-func NewService(db *db.DataBase, c *config.Config) *Service {
-	return &Service{
+func NewMenusService(db *db.DataBase) *MenusService {
+	return &MenusService{
 		db: db,
-		c:  c,
 	}
 }
 
-type res struct {
-	*model.Users
-	Token string `json:"token"`
-}
-
-func (s *Service) Login(args ...string) (*res, error) {
-
-	var account *model.Users
-	var r res
-	s.db.Salve.Model(model.Users{}).
-		Where("enabled = ?", 1).
-		Where("account = ?", args[0]).
-		First(&account)
-
-	r.Users = account
-	hash := sha1.New()
-	hash.Write([]byte(args[1]))
-	p := hex.EncodeToString(hash.Sum([]byte("")))
-	if account.Password != p {
-		return nil, errors.New("密码有误")
-	}
-
-	t, err := jwt.GenerateToken(account.Id, account.Name, s.c)
-	if err != nil {
-		return nil, err
-	}
-	r.Token = t
-	return &r, nil
-}
-
-func (s *Service) GetMenus(uId int) *[]model.Menus {
+// GetMenus 获取菜单
+func (s *MenusService) GetMenus(uId int) *[]model.Menus {
 	type role struct {
 		Type   int `json:"type"`
 		RoleId int `json:"role_id"`
@@ -92,4 +56,21 @@ func (s *Service) GetMenus(uId int) *[]model.Menus {
 		Scan(&menus)
 
 	return &menus
+}
+
+//QueryMenus 菜单管理
+func (s *MenusService) QueryMenus() *[]model.Menus {
+	var menus []model.Menus
+	s.db.Salve.Model(model.Menus{}).
+		Scan(&menus)
+	return &menus
+}
+
+//AddMenus 添加菜单
+func (s *MenusService) AddMenus(menu *model.Menus) error {
+	tx := s.db.Master.Model(model.Menus{}).Create(menu)
+	if tx.Error != nil {
+		return tx.Error
+	}
+	return nil
 }

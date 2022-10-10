@@ -4,15 +4,17 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
 	"github.com/google/wire"
+	"jincheng/app/request/meber"
 	"jincheng/internal/core/base"
 	"jincheng/internal/core/valida"
 	"jincheng/internal/model"
 	"jincheng/internal/service/member"
+	"strconv"
 )
 
 var Provider = wire.NewSet(NewController, memberSer.NewService)
 
-func NewController(s *memberSer.Service) *Controller {
+func NewController(s *memberSer.MemService) *Controller {
 	return &Controller{
 		service: s,
 	}
@@ -20,7 +22,7 @@ func NewController(s *memberSer.Service) *Controller {
 
 // Controller 会员中心
 type Controller struct {
-	service *memberSer.Service
+	service *memberSer.MemService
 }
 
 //Edit 编辑
@@ -30,7 +32,7 @@ func (c *Controller) Edit(ctx *gin.Context) {
 	type reqParam struct {
 		Id       uint   `json:"member_id" binding:"required" msg:"会员member_id不能为空"`
 		Name     string `json:"member_name" binding:"required" msg:"会员名不能为空"`
-		Phone    string `json:"phone" binding:"required" msg:"会员电话号码不能为空"`
+		Mobile   string `json:"mobile" binding:"required" msg:"会员电话号码不能为空"`
 		Note     string `json:"note"`
 		BrithDay string `json:"brith_day"`
 		Gender   string `json:"gender"`
@@ -47,21 +49,19 @@ func (c *Controller) Edit(ctx *gin.Context) {
 
 // GetList 获取会员列表
 func (c *Controller) GetList(ctx *gin.Context) {
-	var param base.ReqPaginateParam
 
-	_ = ctx.ShouldBindJSON(&param)
+	output := base.NewResponse(ctx)
 
-	if param.Current <= 0 {
-		param.Current = 1
-	}
+	var memReq meber.MemRequest
+	memReq.PageNum, _ = strconv.Atoi(ctx.DefaultQuery("pageNum", "1"))
+	memReq.PageSize, _ = strconv.Atoi(ctx.DefaultQuery("PageSize", "20"))
+	memReq.Name = ctx.Query("name")
+	memReq.Mobile = ctx.Query("mobile")
+	memReq.CreatedAt = ctx.Query("created_at")
 
-	if param.Size <= 0 {
-		param.Size = 20
-	}
+	res, total := c.service.GetList(&memReq)
 
-	res, total := c.service.GetList(param.Current, param.Size)
-
-	base.NewResponse(ctx).Paginate(res, total, param)
+	output.Paginate(res, total, &memReq)
 }
 
 // Add 新增会员
@@ -94,16 +94,5 @@ func (c *Controller) Add(ctx *gin.Context) {
 		return
 	}
 	output.Success("添加成功")
-
-}
-
-func (c *Controller) Test(ctx *gin.Context) {
-	param := &struct {
-		Msg string `json:"msg"`
-	}{}
-
-	param.Msg = ctx.Query("msg")
-
-	base.NewResponse(ctx).Success(c.service.Test(param.Msg))
 
 }

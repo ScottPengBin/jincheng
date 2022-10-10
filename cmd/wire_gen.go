@@ -34,11 +34,16 @@ func InitApp() *App {
 	dataBase := db.NewDataBase(configConfig, logger)
 	service := memberSer.NewService(dataBase)
 	controller := member.NewController(service)
-	adminService := admin.NewService(dataBase, configConfig)
-	adminController := admin2.NewController(adminService)
+	loginService := admin.NewLoginService(dataBase, configConfig)
+	loginController := admin2.NewLoginController(loginService)
+	menusService := admin.NewMenusService(dataBase)
+	menusController := admin2.NewMensController(menusService)
+	userService := admin.NewUserService(dataBase)
+	userController := admin2.NewUserController(userService)
+	adm := admin2.NewAdmin(loginController, menusController, userController)
 	optionsController := &router.OptionsController{
 		Member: controller,
-		Admin:  adminController,
+		Admin:  adm,
 	}
 	v := router.Router(optionsController)
 	engine := http.NewRouter(configConfig, logger, v)
