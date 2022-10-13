@@ -75,3 +75,12 @@ func (r *Response) ErrorParam(err string) {
 		Success: false,
 	})
 }
+
+//Unauthorized 未授权登录
+func (r *Response) Unauthorized(err string) {
+	r.ctx.JSON(http2.StatusUnauthorized, &Result{
+		Code:    10010,
+		Err:     err,
+		Success: false,
+	})
+}

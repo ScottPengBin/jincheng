@@ -5,23 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5eb7bbc9-e4d4-427b-8132-7d131b82c20b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controller/admin/menus.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controller/admin/user.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/service/admin/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controller/admin/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/admin/login.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/member/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/wire_gen.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/wire_gen.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/init.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/base/request.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/request.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/request/meber/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/request/meber/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/core/base/responese.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/responese.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/jwt/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/log/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/log/log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/middle_ware/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/middle_ware/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/middle_ware/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/middle_ware/log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/core/valida/zhw.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/valida/zhw.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/car_info.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/car_info.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/member.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/member.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/menus.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/menus.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/users.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/router/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/service/admin/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/admin/login.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/service/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/member/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/jc_admin/src/pages/member/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/jc_admin/src/pages/member/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +43,6 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="PackageJsonUpdateNotifier">
-    <dismissed value="$PROJECT_DIR$/web/jc-admin/package.json" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -77,6 +73,14 @@
   }
 }</component>
   <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="jincheng" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build jincheng/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="jincheng" />
       <working_directory value="$PROJECT_DIR$" />
@@ -84,6 +88,15 @@
       <package value="jincheng/cmd" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="jincheng" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -95,6 +108,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -114,16 +138,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/app/controller/member/index.go</url>
-          <line>45</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/app/controller/member/index.go</url>
-          <line>41</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$USER_HOME$/go/pkg/mod/github.com/dgrijalva/jwt-go@v3.2.0+incompatible/rsa_utils.go</url>
           <line>17</line>
           <option name="timeStamp" value="12" />
@@ -137,6 +151,11 @@
           <url>file://$PROJECT_DIR$/internal/service/admin/menus.go</url>
           <line>70</line>
           <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/service/member/index.go</url>
+          <line>36</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

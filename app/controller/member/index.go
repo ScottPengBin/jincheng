@@ -2,12 +2,10 @@ package member
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 	"github.com/google/wire"
 	"jincheng/app/request/meber"
 	"jincheng/internal/core/base"
 	"jincheng/internal/core/valida"
-	"jincheng/internal/model"
 	"jincheng/internal/service/member"
 	"strconv"
 )
@@ -66,28 +64,18 @@ func (c *Controller) GetList(ctx *gin.Context) {
 
 // Add 新增会员
 func (c *Controller) Add(ctx *gin.Context) {
-	//会员信息
-	var memParam model.Member
-	//车辆信息
-	var cardParam model.CarInfo
+	var param meber.AddReq
 
 	output := base.NewResponse(ctx)
 
 	//会员信息验证
-	if err := ctx.ShouldBindBodyWith(&memParam, binding.JSON); err != nil {
-		errs := valida.Trans(err)
+	if err := ctx.ShouldBindJSON(&param); err != nil {
+		errs := valida.TransMsg(err, param)
 		output.ErrorParam(errs)
 		return
 	}
 
-	//车辆信息验证
-	if err := ctx.ShouldBindBodyWith(&cardParam, binding.JSON); err != nil {
-		errs := valida.Trans(err)
-		output.ErrorParam(errs)
-		return
-	}
-
-	err := c.service.Add(&memParam, &cardParam)
+	err := c.service.Add(&param)
 
 	if err != nil {
 		output.ErrorParam(err.Error())
@@ -95,4 +83,48 @@ func (c *Controller) Add(ctx *gin.Context) {
 	}
 	output.Success("添加成功")
 
+}
+
+//GetOne 获取详情
+func (c *Controller) GetOne(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+	id, _ := strconv.Atoi(ctx.Query("id"))
+	if id > 0 {
+		res := c.service.GetOne(id)
+		output.Success(res)
+		return
+	}
+	output.ErrorParam("id有误")
+}
+
+//GetOneByMobile 通过电话号码获取信息
+func (c *Controller) GetOneByMobile(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+
+	mobile := ctx.Query("mobile")
+	if mobile == "" {
+		output.ErrorParam("电话号码不能为空")
+		return
+	}
+	res := c.service.GetOneByMobile(mobile)
+	output.Success(res)
+}
+
+//UpdateMemberById 通过id更新
+func (c *Controller) UpdateMemberById(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+
+	var param meber.UpdateReq
+	if err := ctx.ShouldBindJSON(&param); err != nil {
+		errs := valida.TransMsg(err, param)
+		output.ErrorParam(errs)
+		return
+	}
+
+	err := c.service.UpdateMemberById(&param)
+	if err != nil {
+		output.ErrorParam(err.Error())
+		return
+	}
+	output.Success("更新成功")
 }

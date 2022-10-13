@@ -45,8 +45,23 @@ func TransMsg(err error, r interface{}) string {
 	s := reflect.TypeOf(r)
 
 	for _, fieldError := range errs {
-		filed, _ := s.FieldByName(fieldError.Field())
+		fileName := fieldError.Field()
+
+		var filed reflect.StructField
+
+		filed, _ = s.FieldByName(fileName)
+
+		for i := 0; i < s.NumField(); i++ {
+			if filed.Name != "" {
+				break
+			}
+			if s.Field(i).Type.Kind() == reflect.Struct {
+				filed, _ = s.Field(i).Type.FieldByName(fileName)
+			}
+		}
+
 		msg := filed.Tag.Get("msg")
+
 		if msg != "" {
 			errMsg += msg + ","
 		} else {

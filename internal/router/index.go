@@ -29,6 +29,9 @@ func Router(oc *OptionsController) func(r *gin.Engine) {
 				mem.GET("getList", oc.Member.GetList)
 				mem.POST("add", oc.Member.Add)
 				mem.POST("edit", oc.Member.Edit)
+				mem.GET("getOne", oc.Member.GetOne)
+				mem.GET("getOneByMobile", oc.Member.GetOneByMobile)
+				mem.POST("updateMemberById", oc.Member.UpdateMemberById)
 			}
 
 			menu := adm.Group("menu")
@@ -39,7 +42,6 @@ func Router(oc *OptionsController) func(r *gin.Engine) {
 
 			adm.POST("login", oc.Admin.Login.Login)
 			adm.GET("authority/queryUserMenus", oc.Admin.Menus.GetMenus)
-
 			adm.GET("user/queryUsersByPage", oc.Admin.User.QueryUsersByPage)
 		}
 	}

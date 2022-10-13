@@ -18,7 +18,7 @@ func Jwt(conf *config.Config) gin.HandlerFunc {
 
 		_, err := jwt.ParseToken(token, conf)
 		if err != nil {
-			base.NewResponse(context).ErrorParam("请先登录")
+			base.NewResponse(context).Unauthorized("请先登录")
 			context.Abort()
 			return
 		}
