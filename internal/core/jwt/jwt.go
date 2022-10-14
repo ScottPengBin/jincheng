@@ -9,8 +9,8 @@ import (
 )
 
 type Claims struct {
-	ID   uint   `json:"id"`
-	Name string `json:"name"`
+	ID        uint   `json:"id"`
+	AdminName string `json:"admin_name"`
 	jwt.StandardClaims
 }
 
@@ -22,8 +22,8 @@ func GenerateToken(id uint, name string, conf *config.Config) (string, error) {
 	}
 
 	cl := Claims{
-		ID:   id,
-		Name: name,
+		ID:        id,
+		AdminName: name,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: time.Now().Add(d).Unix(),
 			Issuer:    conf.Jwt.Issuer,

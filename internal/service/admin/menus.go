@@ -3,6 +3,7 @@ package admin
 import (
 	"jincheng/internal/core/db"
 	"jincheng/internal/model"
+	"time"
 )
 
 type MenusService struct {
@@ -68,6 +69,9 @@ func (s *MenusService) QueryMenus() *[]model.Menus {
 
 //AddMenus 添加菜单
 func (s *MenusService) AddMenus(menu *model.Menus) error {
+	t := time.Now()
+	menu.CreatedAt = model.MyTime(t)
+	menu.UpdatedAt = model.MyTime(t)
 	tx := s.db.Master.Model(model.Menus{}).Create(menu)
 	if tx.Error != nil {
 		return tx.Error

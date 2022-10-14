@@ -16,12 +16,15 @@ func Jwt(conf *config.Config) gin.HandlerFunc {
 			return
 		}
 
-		_, err := jwt.ParseToken(token, conf)
+		c, err := jwt.ParseToken(token, conf)
 		if err != nil {
 			base.NewResponse(context).Unauthorized("请先登录")
 			context.Abort()
 			return
 		}
+
+		context.AddParam("admin_name", c.AdminName)
+		context.AddParam("admin_id", string(c.ID))
 		context.Next()
 	}
 }

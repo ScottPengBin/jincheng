@@ -5,22 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5eb7bbc9-e4d4-427b-8132-7d131b82c20b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controller/maintain/index.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/request/maintain/index.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/model/maintain_record.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/maintain/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controller/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/controller/member/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/request/meber/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/request/meber/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/base/responese.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/base/responese.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/core/jwt/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/jwt/jwt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/log/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/log/log.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/core/middle_ware/jwt.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/middle_ware/jwt.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/middle_ware/log.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/middle_ware/log.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/core/valida/zhw.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/core/valida/zhw.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/model/car_info.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/car_info.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/member.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/member.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/router/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/router/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/service/admin/menus.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/admin/menus.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/service/member/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/member/index.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/jc_admin/src/pages/member/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/web/jc_admin/src/pages/member/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/jc_admin/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/web/jc_admin/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/jc_admin/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/web/jc_admin/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,9 @@
     <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="2Ey8tDsn0itDt6c55aGS5Hbtu6e" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -73,14 +74,6 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="jincheng" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build jincheng/cmd" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="jincheng" />
       <working_directory value="$PROJECT_DIR$" />
@@ -88,15 +81,6 @@
       <package value="jincheng/cmd" />
       <directory value="$PROJECT_DIR$" />
       <filePath value="$PROJECT_DIR$/cmd/main.go" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="jincheng" />
-      <working_directory value="$PROJECT_DIR$" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -149,13 +133,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/internal/service/admin/menus.go</url>
-          <line>70</line>
+          <line>74</line>
           <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/internal/service/member/index.go</url>
-          <line>36</line>
-          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

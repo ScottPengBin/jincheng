@@ -12,5 +12,6 @@ type CarInfo struct {
 	CarNo      string                `json:"car_no" binding:"required"`
 	CarColor   string                `json:"car_color" binding:"required"`
 	CarNote    string                `json:"car_note"`
+	DeleteAt   MyTime                `json:"-" gorm:"delete_at"`
 	DeleteFlag soft_delete.DeletedAt `json:"delete_flag" gorm:"softDelete:flag,DeletedAtField:DeletedAt" gorm:"delete_flag"`
 }

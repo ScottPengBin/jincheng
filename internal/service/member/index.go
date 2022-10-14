@@ -1,6 +1,7 @@
 package memberSer
 
 import (
+	"errors"
 	"fmt"
 	"jincheng/app/request/meber"
 	"jincheng/internal/core/db"
@@ -160,6 +161,43 @@ func (s *MemService) UpdateMemberById(req *meber.UpdateReq) error {
 		return c.Error
 	}
 
+	tx.Commit()
+	return nil
+}
+
+func (s *MemService) Del(id int) error {
+	var mem model.Member
+	var car model.CarInfo
+
+	s.db.Master.Model(model.Member{}).
+		Where("id = ?", id).
+		First(&mem)
+
+	s.db.Master.Model(model.CarInfo{}).
+		Where("id = ?", id).
+		First(&car)
+
+	if &mem == nil || &car == nil {
+		return errors.New("数据不存在")
+	}
+
+	t := time.Now()
+
+	mem.UpdatedAt = model.MyTime(t)
+	car.UpdatedAt = model.MyTime(t)
+	car.DeleteAt = model.MyTime(t)
+	mem.DeleteFlag = 1
+	car.DeleteFlag = 1
+	tx := s.db.Master.Begin()
+	if err := tx.Model(model.Member{}).Where("id = ?", id).Updates(&mem); err.Error != nil {
+		tx.Rollback()
+		return err.Error
+	}
+
+	if err := tx.Model(model.CarInfo{}).Where("id = ?", mem.CarId).Updates(&car); err.Error != nil {
+		tx.Rollback()
+		return err.Error
+	}
 	tx.Commit()
 	return nil
 }

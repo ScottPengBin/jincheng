@@ -128,3 +128,22 @@ func (c *Controller) UpdateMemberById(ctx *gin.Context) {
 	}
 	output.Success("更新成功")
 }
+
+// Del 删除
+func (c *Controller) Del(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+
+	id, err := strconv.Atoi(ctx.Param("id"))
+	if err != nil {
+		output.ErrorParam("参数错误")
+		return
+	}
+
+	err = c.service.Del(id)
+
+	if err != nil {
+		output.ErrorParam(err.Error())
+		return
+	}
+	output.Success("删除成功")
+}

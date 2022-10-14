@@ -8,3 +8,5 @@ config.yml
 .air.conf
 tmp
 .idea/workspace.xml
+.husky
+front
