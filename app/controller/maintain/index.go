@@ -45,7 +45,11 @@ func (c *Controller) Add(ctx *gin.Context) {
 		return
 	}
 
-	c.service.Add(&param)
+	err = c.service.Add(&param)
+	if err != nil {
+		output.ErrorParam(err.Error())
+		return
+	}
 
 	output.Success("新增成功")
 }

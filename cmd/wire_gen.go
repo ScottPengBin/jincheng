@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	admin2 "jincheng/app/controller/admin"
+	maintain2 "jincheng/app/controller/maintain"
 	"jincheng/app/controller/member"
 	"jincheng/config"
 	"jincheng/internal/core/base/http"
@@ -17,6 +18,7 @@ import (
 	"jincheng/internal/core/log"
 	"jincheng/internal/router"
 	"jincheng/internal/service/admin"
+	"jincheng/internal/service/maintain"
 	"jincheng/internal/service/member"
 	http2 "net/http"
 	"os"
@@ -32,18 +34,21 @@ func InitApp() *App {
 	configConfig := config.GetConfig()
 	logger := log.NewLog()
 	dataBase := db.NewDataBase(configConfig, logger)
-	service := memberSer.NewService(dataBase)
-	controller := member.NewController(service)
+	memService := memberSer.NewService(dataBase)
+	controller := member.NewController(memService)
 	loginService := admin.NewLoginService(dataBase, configConfig)
 	loginController := admin2.NewLoginController(loginService)
 	menusService := admin.NewMenusService(dataBase)
 	menusController := admin2.NewMensController(menusService)
 	userService := admin.NewUserService(dataBase)
 	userController := admin2.NewUserController(userService)
-	adm := admin2.NewAdmin(loginController, menusController, userController)
+	adminAdmin := admin2.NewAdmin(loginController, menusController, userController)
+	service := maintain.NewService(dataBase)
+	maintainController := maintain2.NewController(service)
 	optionsController := &router.OptionsController{
-		Member: controller,
-		Admin:  adm,
+		Member:   controller,
+		Admin:    adminAdmin,
+		Maintain: maintainController,
 	}
 	v := router.Router(optionsController)
 	engine := http.NewRouter(configConfig, logger, v)
@@ -77,7 +82,7 @@ func (app *App) Start() <-chan os.Signal {
 	go func() {
 		err := app.HttpServer.Start()
 		if err != nil && err != http2.ErrServerClosed {
-			panic(err)
+			app.Logger.Errorln(err)
 		}
 	}()
 	app.done = append(app.done, c)

@@ -47,7 +47,7 @@ func (app *App) Start() <-chan os.Signal {
 	go func() {
 		err := app.HttpServer.Start()
 		if err != nil && err != http2.ErrServerClosed {
-			panic(err)
+			app.Logger.Errorln(err)
 		}
 	}()
 	app.done = append(app.done, c)
