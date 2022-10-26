@@ -7,6 +7,7 @@ import (
 	"jincheng/internal/core/base"
 	"jincheng/internal/core/valida"
 	"jincheng/internal/service/maintain"
+	"strconv"
 )
 
 type Controller struct {
@@ -52,4 +53,50 @@ func (c *Controller) Add(ctx *gin.Context) {
 	}
 
 	output.Success("新增成功")
+}
+
+func (c *Controller) Edit(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+	//数据校验
+	var editParam maintain2.EditReq
+	err := ctx.ShouldBindJSON(&editParam)
+	if err != nil {
+		msg := valida.TransMsg(err, editParam)
+		output.ErrorParam(msg)
+		return
+	}
+	err = c.service.Edit(&editParam)
+	if err != nil {
+		output.ErrorParam(err.Error())
+		return
+	}
+
+	output.Success("修改成功")
+}
+
+func (c *Controller) GetOne(ctx *gin.Context) {
+	output := base.NewResponse(ctx)
+	id, _ := strconv.Atoi(ctx.Query("id"))
+
+	if id > 0 {
+		res := c.service.GetOne(id)
+		output.Success(res)
+		return
+	}
+
+	output.ErrorParam("id有误")
+
+}
+
+func (c *Controller) Del(ctx *gin.Context)  {
+	output := base.NewResponse(ctx)
+	id, _ := strconv.Atoi(ctx.Query("id"))
+
+	if id > 0 {
+		res := c.service.Del(id)
+		output.Success(res)
+		return
+	}
+
+	output.ErrorParam("id有误")
 }

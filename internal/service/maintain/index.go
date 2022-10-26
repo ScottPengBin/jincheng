@@ -2,6 +2,7 @@ package maintain
 
 import (
 	"encoding/json"
+	"errors"
 	"jincheng/app/request/maintain"
 	"jincheng/internal/core/db"
 	"jincheng/internal/model"
@@ -60,6 +61,44 @@ func (s *Service) Add(req *maintain.AddReq) error {
 	record.MaintainEndAt = req.MaintainEndAt
 
 	s.db.Master.Model(model.MaintainRecord{}).Create(&record)
+
+	return nil
+}
+
+func (s *Service) Edit(req *maintain.EditReq) error {
+
+	tx := s.db.Master.Model(model.MaintainRecord{}).
+		Where("id = ?", req.Id).
+		Updates(req.AddReq)
+
+	if tx.Error != nil {
+		return tx.Error
+	}
+
+	return nil
+}
+
+func (s *Service) GetOne(id int) *model.MaintainRecord {
+	var record model.MaintainRecord
+	s.db.Salve.Model(model.MaintainRecord{}).
+		Where("id = ?", id).
+		First(&record)
+	return &record
+}
+
+func (s *Service) Del(id int) error {
+	var record model.MaintainRecord
+
+	s.db.Master.Model(model.MaintainRecord{}).
+		Where("id = ?", id).
+		First(&record)
+	if &record == nil {
+		return errors.New("数据不存在")
+	}
+
+	s.db.Master.Model(model.MaintainRecord{}).
+		Where("id = ?", id).
+		Delete(&record)
 
 	return nil
 }

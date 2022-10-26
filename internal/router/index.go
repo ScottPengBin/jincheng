@@ -54,6 +54,10 @@ func Router(oc *OptionsController) func(r *gin.Engine) {
 			mt := adm.Group("maintain")
 			{
 				mt.GET("getList", oc.Maintain.GetList)
+				mt.GET("getOne", oc.Maintain.GetOne)
+				mt.POST("add", oc.Maintain.Add)
+				mt.POST("getList", oc.Maintain.Edit)
+				mt.DELETE("delete/:id", oc.Maintain.Del)
 			}
 		}
 	}

@@ -23,3 +23,8 @@ type AddReq struct {
 	MaintainEndAt   model.MyTime `json:"maintain_end_at" binding:"required" msg:"保养结束不能为空"`
 	MaintainNote    string       `json:"maintain_note"`
 }
+
+type EditReq struct {
+	Id int `json:"id" binding:"required" msg:"id不能为空"`
+	AddReq
+}
