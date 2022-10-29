@@ -10,6 +10,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 	admin2 "jincheng/app/controller/admin"
+	integral2 "jincheng/app/controller/integral"
 	maintain2 "jincheng/app/controller/maintain"
 	"jincheng/app/controller/member"
 	"jincheng/config"
@@ -18,6 +19,7 @@ import (
 	"jincheng/internal/core/log"
 	"jincheng/internal/router"
 	"jincheng/internal/service/admin"
+	"jincheng/internal/service/integral"
 	"jincheng/internal/service/maintain"
 	"jincheng/internal/service/member"
 	http2 "net/http"
@@ -45,10 +47,13 @@ func InitApp() *App {
 	adminAdmin := admin2.NewAdmin(loginController, menusController, userController)
 	service := maintain.NewService(dataBase)
 	maintainController := maintain2.NewController(service)
+	integralService := integral.NewService(dataBase)
+	integralController := integral2.NewController(integralService)
 	optionsController := &router.OptionsController{
 		Member:   controller,
 		Admin:    adminAdmin,
 		Maintain: maintainController,
+		Integral: integralController,
 	}
 	v := router.Router(optionsController)
 	engine := http.NewRouter(configConfig, logger, v)

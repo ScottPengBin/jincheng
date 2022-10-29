@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"jincheng/app/controller/admin"
+	"jincheng/app/controller/integral"
 	"jincheng/app/controller/maintain"
 	"jincheng/app/controller/member"
 )
@@ -12,12 +13,14 @@ type OptionsController struct {
 	Member   *member.Controller
 	Admin    *admin.Admin
 	Maintain *maintain.Controller
+	Integral *integral.Controller
 }
 
 var Provider = wire.NewSet(
 	member.Provider,
 	admin.AdmProvider,
 	maintain.Provider,
+	integral.Provider,
 	wire.Struct(new(OptionsController), "*"),
 )
 
